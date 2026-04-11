@@ -1,0 +1,103 @@
+1.Wifi is defined on IEEE 802.11 standard.
+It functions on the first two OSI layers that is physical and data link layer.
+Physical layer defines the frequency bands that is 2.4/5/6 /Ghz ,Modulation techniques(DSS,ODFM) and data rate(54 Mbps,600 Mbps).(Signal transmission)
+Data Link Layer defines the MAC addressing, frame formatting,Retransmission etc.(Communication)
+
+2.
+Device	 	Wi-Fi Standard		Wi-Fi Generation	Frequency Band		Max Speed
+Smartphone	802.11ax		Wi-Fi 6E		2.4 GHz / 5 GHz		9.6 Gbps 
+Laptop		802.11ax		Wi-Fi 6E		5 GHz			288 Mbps
+Smart TV	802.11n			Wi-Fi 6			2.4 GHz / 5 GHz		9.6 Gbps
+
+3.
+BSS:
+*Basic Service Set
+*Wifi Network with Single Access Point(AP).
+*Multiple Client devices like phone,laptop,TV etc connect to this AP within the network.
+
+ESS:
+*Extended Service Set
+*Multiple BSS connected together.
+*All AP share the same SSID.
+*Universities ,airports etc are example locations of ESS.
+
+4.
+*Wireless Connectivity
+*Authentication:Verifies users
+*Data Forwarding:Forwards data between wireless and wired devices
+*Network Management:Load balancing,channel selection etc.
+*Security:Firewall ,Encryption
+
+5.
+Bridge mode connects two networks wirelessly.One AP is connected to another between two different networks maintain high speed.Used to connect two buildings.
+
+Repeater mode has one repeater AP that extends Wifi Coverage client devices through a root AP.In this a router is connected to a repeater.It increases signal range.
+
+6.
+• IEEE 802.11a: 54 Mbit/s, 5 GHz standard (1999).Has less interference.
+• IEEE 802.11b: 5.5 Mbit/s and 11 Mbit/s,crowded 2.4 GHz standard (1999).Has more interference.
+
+7.
+Parameter	2.4 GHz		5 GHz
+Frequency Band	2.4 GHz		5 GHz
+Channel		6		36
+Link Speed	52/115 Mbps	69/216 Mbps
+Signal Strength	Strong		Medium
+Range		Long		Short
+Interference	High		Low
+
+2.4 Ghz configuration has better signal strength and coverage but less speed than 5 Ghz configuration.
+
+8.
+Feature			IEEE						WFA
+Full name	Institute of Electrical and Electronics Engineers	Wi-Fi Alliance
+Role		Develops standards					Certifies devices
+Example		802.11 standard						Wi-Fi certified logo
+Function	Defines technology					Ensures interoperability
+
+IEEE lays standard for the technology to be used whereas WFA tests whether the standard is followed.
+
+9.Backhaul is the linkage between the Access Points and Internet.
+
+Types:
+1.Fiber Optics
+2.MOCA-Multimedia over Coax Alliance
+3.Satellite
+4.Cellular
+5.Powerline Backhaul
+
+10.
+1.Infrastructure Mode:
+Multiple devices connected to AP which provides internet Access.
+Used in Schools,colleges.
+
+2.Repeater Mode:
+Repeater AP connected to root AP for Wifi extensivity.
+Used in Multi Floor Homes and Dead zones in office.
+
+3.Bridge Mode:
+APs of different networks connected for better internet connectivity.
+Used between different buildings.
+USed in large campuses and smart cities.
+
+4.Adhoc mode:
+No AP and devices connect within each other.
+Used in File Sharing and Peer to Peer network
+
+5.Mobile Hotspot:
+Mobile data shared over devices as Wifi
+used in emergency situations and remote work
+
+6.Mesh Topology:
+Multiple APs connected together to provide continuous coverage
+USed in Hotels and Offices
+
+
+7.IoT Gateway Mode:
+Connects IoT devices to the Internet/Cloud.
+Used in Smart Homes,Smart Devices
+
+8.Work Group Bridge Mode:
+Wireless Connection for wired only devices.
+Allows ethernet devices to connect through Wifi
+Used in Printers, Surveillance Camera  
