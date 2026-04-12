@@ -1,0 +1,137 @@
+1.
+Split MAC architecture in Light Weight APs have MAC functions divided between the WLC and the APs.
+Lower MAC functions like encrypting data,client association,frame ACK,beacon transmission etc are handled by the APs.(Real Time ops)
+Higher MAC functions like AUC,roaming,policy mgmt.,network monitoring etc are handled by WLC.(Centralized control)
+
+Split-MAC Improves AP Performance:
+1.Centralized management 2.Better roaming 3.Reduced AP complexity 4.Improved scalability 5.Network optimization	
+
+2.
+CAPWAP (Control And Provisioning of Wireless Access Points) is a protocol used to connect Lightweight Access Points to a Wireless LAN Controller by creating secure tunnels.
+
+It allows:
+
+Remote configuration of APs
+Secure communication
+Centralized control
+
+Flow between AP and controller:
+1.IP allocation for AP
+2.Access Controller Discovery
+   -Discovery Request
+   -Discovery Response
+   -DTLS connect(secure tunnel)
+3.AP access control:
+   -Join request
+   -join response
+   -image data(for compatability)
+4.Configuration Delivery:
+   -Configuration Status Request
+   -Configuration Status Response(SSID,policies,VLANs)
+   -Change State Event Request(data check)
+   -Change State Event Response
+5.CAPWAP tunnel maintenance:
+   -keepalive messages
+   -Echo req
+   -Echo res
+6.Configuration update:
+   -Configuration Update Request
+   -Configuration Update Response
+
+
+3.
+CAPWAP works in layer 3(IP communication) and layer 4(UDP request)
+1.Control Tunnel
+-AP management
+-Configuration
+-Authentication
+-Keepalive messages
+
+2. Data Tunnel
+-Client data traffic
+-Packet forwarding
+-Network communication
+
+4.
+Feature		Lightweight AP			Cloud-Based AP
+Controller	Local WLC			Cloud controller
+Management	On-premise			Cloud dashboard
+Deployment	Enterprise networks		Distributed locations
+Cost		Requires controller hardware	Subscription model
+Maintenance	Local IT management		Managed through cloud
+Example		AP->WLC->Network		AP->Internet->Cloud Controller
+
+
+5.
+Steps:
+1.Keepalive messages:
+To ensure controller is reachable and tunnel is active,AP and controller send keepalive messages to each other.
+2.Echo Request/Response:
+AP also send echo request message for which controller send echo response.
+3.Tunnel health monitoring:
+The controller also continuously checks AP status,tunnel activity and response time.
+
+If tunnel breaks:
+AP reaches discovery mode and attemps to reconnect to controller.
+
+6.
+Sniffer Mode
+
+Used for:
+-packet capture
+-debugging wireless issues
+-analyzing network traffic
+
+Example tool: Wireshark
+Use case: Network troubleshooting
+
+Monitor Mode
+
+Used for:
+-detecting rogue access points
+-wireless intrusion detection
+-identifying interference
+-collect telemetry data for smart analytics.
+
+USe case: Security management
+
+7.
+When the controller is deployed in WAN or remote location, the best mode is:
+
+FlexConnect Mode because it allows:
+-local switching of traffic
+-reduced WLC dependency
+continued operation if WAN fails
+Benefits:
+-Local data switching	
+-Reduced latency and Faster performance
+-If WLC fails even then network continues to work
+
+8.
+Autonomous APs operate independently without a controller.
+
+Challenges:
+1.Difficult management: Each AP must be configured manually.
+2.Poor scalability: Managing hundreds of APs becomes difficult.
+3.Roaming issues: Client roaming between APs is not seamless.
+4.Security management: Applying security policies across many APs is complex.
+5.Firmware updates :Each AP must be updated separately.
+
+9.
+Behavior depends on AP mode.
+
+Local Mode
+If controller goes down:
+-CAPWAP tunnel breaks
+-AP loses control communication
+-Client traffic stops
+-New clients cannot connect
+
+FlexConnect Mode
+If controller goes down:
+-AP switch to autonomous mode
+-Existing clients continue to work
+-Local switching still operates
+-Only management functions stop
+
+FlexCOnnect is more reliable than local mode.
