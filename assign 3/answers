@@ -1,0 +1,144 @@
+1.
+Standard	Band		Technique	Max Speed	Key Feature
+802.11  	2.4 GHz        FHSS+DSSS 	2 Mbps 		Legacy
+802.11b		2.4 GHz		DSSS		11 Mbps		First popular Wi-Fi
+802.11a		5 GHz		OFDM		54 Mbps		Less interference
+802.11g		2.4 GHz		OFDM		54 Mbps		Backward compatible
+802.11n (Wi-Fi 4)2.4/5		OFDM + MIMO	600 Mbps	Spatial streams
+802.11ac (Wi-Fi 5)5 GHz		OFDM + MU-MIMO	6.9 Gbps	Wider channels
+802.11ax (Wi-Fi 6)2.4/5		OFDMA + MU-MIMO	9.6 Gbps	Efficiency
+802.11be (Wi-Fi 7)2.4/5/6	OFDMA + MLO	46 Gbps		Multi-link
+
+
+2.
+
+DSSS is Direct Sequence Spread Spectrum.It works by spreading signal across bandwidth using chipsets.A bit is encoded as multiple bits.
+It is nise resistant and used in 802.11b
+
+FHSS stands for Frequency Hopping Spread Spectrum.It works by jumping across different frequencies and avoids interference. It was used in early Wifi.
+
+3.
+Scheme		Bits/Symbol		Speed		Reliability
+BPSK		1			Low		High
+QPSK		2			Medium		Good
+16-QAM		4			Higher		Moderate
+64-QAM		6			High		Less robust
+256-QAM		8			Very high	Needs good signal
+1024-QAM	10			Ultra high	Very sensitive
+
+4.
+OFDM splits channel into many subcarriers.
+
+This helps in:
+Parallel transmission
+Less interference by maintaining orthogonality.
+Better spectral efficiency
+
+Example:
+
+20 MHz → divided into many small carriers
+
+5.
+Band	Spectrum	Channels
+2.4 GHz	60 MHz		 upto 3
+5 GHz	500 MHz		 upto 25
+6 GHz	1200 MHz	 upto 56
+
+More spectrum means more channels thereby less interference
+
+6.
+Guard Interval refers to time gap between 2 OFDM symbols to prevent Inter Symbol Interference(ISI)
+
+Two types:
+1.Short Guard : Provides more speed(more symbol/sec and high throughput) but risky in noisy environment.(Eg. 0.4 microsec in 802.11n)
+2.Long Guard  : Provides high reliability but is comparatively slow.(Eg. 0.8 microsec in 802.11n)
+
+7.
+Flow:
+
+MSDU → MPDU → PSDU → PPDU → bits
+
+Components of PPDU:
+
+Preamble helps in synchronization
+PHY header helps in transmission info
+Payload (PSDU) has actual data
+
+8.
+Feature		OFDM			OFDMA
+Users		One user		Multiple users
+Channel use	Entire channel		Divided
+Efficiency	Good			Excellent
+Used in 	802.11a/g/n/ac		802.11 ax/be
+
+9.
+Feature		MIMO					MU-MIMO
+Users		Single					Multiple
+Streams		To one device				Shared
+Use		Wi-Fi 4					Wi-Fi 5/6
+Example		2x2 MIMO router to single laptop  	4x4 MIMO router to phone,laptop,PC and tablet
+
+10.
+PPDU (Physical Protocol Data Unit):
+PPDU is the complete PHY-layer frame that goes over the air that is what is transmitted at the phy layer.
+It contains:
+[Preamble][PHY Header][PSDU]
+
+
+PLCP (Physical Layer Convergence Protocol)
+PLCP is the interface between MAC and Physical layer.
+It takes MAC data (PSDU) and formats/frames it for transmission.
+PLCP:
+1. Encapsulation
+PSDU is wrapped into PPDU
+2.PLCP adds:
+Preamble + PHY Header
+3. Makes receiver understand transmission
+The PHY header tells:
+modulation (QAM level)
+coding rate
+number of spatial streams
+packet length
+
+Without PLCP:
+Receiver cannot decode signal
+
+PMD (Physical Medium Dependent)
+PMD is the lowest part of PHY layer that actually transmits signals.
+PMD:
+1. Modulation
+Converts bits into signals using:
+PSK
+QAM
+OFDM/OFDMA
+2. Applies RF processing
+upconversion to RF frequency
+amplification
+antenna transmission
+3. Uses MIMO
+multiple antennas
+spatial streams
+4. Transmits over air
+
+Final output:
+
+010101 → electromagnetic waves → air
+
+11.
+Types of PPDU:
+1.Short Preamble(72 bits of data)
+2.Long Preamble(144 bits of data)
+
+
+Type				Standard
+Legacy PPDU			802.11a/b/g
+High Throughput(HT) PPDU	802.11n
+Very High Throughput(VHT) PPDU	802.11ac
+High Efficiency(HE) PPDU	802.11ax
+
+12.
+Rate =
+(Bits per subcarrier × Coding rate × Subcarriers × Spatial streams)
+/ Total Symbol duration
+
+Total Symbol Duration=Symbol Duration + Guard Intervals
