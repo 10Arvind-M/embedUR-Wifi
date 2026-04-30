@@ -1,0 +1,203 @@
+1.
+The MAC (Medium Access Control) layer is part of the Data Link Layer (Layer 2) of the OSI model.
+Position:
+OSI Layer 2 → Data Link Layer → LLC + MAC
+Functions:
+Controls access to wireless medium (who transmits when)
+Frame formatting (802.11 frames)
+Error detection (FCS)
+Retransmission (ACK mechanism)
+Addressing (MAC addresses)
+Power management
+Security handling (EAPOL, encryption triggers)
+
+Significance: Enables reliable communication over a shared wireless medium.
+
+2.
+ 802.11 MAC Header Format
+Main fields:
+Field			Purpose
+Frame Control		Type, subtype, flags
+Duration		Time medium reserved
+Address 1		Receiver
+Address 2		Transmitter
+Address 3		BSSID / Destination
+Address 4		Used in WDS
+Sequence Control	Frame ordering
+QoS Control		QoS handling
+HT Control		High throughput info
+Followed by:
+Payload (MSDU)
+FCS (error detection)
+
+
+3. 
+MAC Layer Functionalities
+1.Management Plane
+
+
+
+
+1.Scanning (active/passive)
+2.Client Association
+3.Security Management
+4.QoS Management
+5.Power Management
+6.Load Balancing
+
+
+2.Control Plane
+
+1.Flow Control
+2.Medium Access Control
+
+3.Data Plane
+
+1.Data transmission
+2.Frame aggregation
+
+
+
+
+4. 
+Scanning Process
+Types:
+1.Passive Scanning
+
+
+Client listens for Beacon frames
+
+
+No transmission
+
+
+Slower but power efficient
+
+
+2.Active Scanning
+
+
+Client sends Probe Request
+
+
+AP replies with Probe Response
+
+
+Faster
+
+Steps:
+Scan channels
+Discover APs
+Select best AP (RSSI, load)
+
+
+5.
+Client Association Process
+Steps:
+1.Probe Request
+2.Probe Response
+3.Athentication Request
+4.Authentication Response
+5.Association Request
+6.Association Response
+
+
+
+6. 
+EAPOL 4-Way Handshake
+Purpose:
+Generate encryption keys securely
+
+🔁 Steps:
+
+
+AP → ANonce
+
+
+Client → SNonce + MIC
+
+
+AP → GTK (encrypted)
+
+
+Client → Confirmation
+
+
+Keys:
+KeyPurposePMKMaster keyPTKUnicast encryptionGTKBroadcast encryption
+
+7.
+ Power Saving Mechanism
+Goal:
+Save battery
+
+Steps:
+
+
+1.Client sends QoS NULL (sleep)
+2.AP buffers data
+3.AP sends Beacon (TIM/DTIM)
+4.Client checks PVB (bitmap)
+5.If data → sends PS-Poll
+6.AP sends data
+
+Types:
+
+Legacy Power Save
+U-APSD (WMM Power Save)
+
+
+
+8. 
+Medium Access Control Methodologies
+1.Point Coordination Function:
+Centralised controller coordinates access
+2.Distributed Coordination Function:
+CSMA/CA
+Channel access distributed between AP and clients.
+3.EDCA:
+DCF+QoS Control by considering AIFS,CWMin-CWMax and TXOP limit
+
+
+9. 
+Block ACK Mechanism
+Purpose:
+Reduce ACK overhead
+Instead of:
+ACK for each frame 
+Use:
+One ACK for multiple frames 
+
+Types:
+
+Immediate Block ACK
+Delayed Block ACK
+
+
+Advantages:
+Higher throughput
+Less overhead
+Efficient retransmission
+
+
+
+10.
+A-MSDU, A-MPDU, A-MSDU in A-MPDU
+
+A-MSDU:
+Multiple MSDUs inside one MAC frame
+One MAC header
+If error → retransmit entire frame
+
+
+A-MPDU:
+Multiple MPDUs aggregated
+Each subframe has its own MAC header
+Retransmit only failed frames using sequence number
+
+A-MSDU inside A-MPDU:
+Combination of both
+Maximum efficiency
+Reduced overhead
+
+
