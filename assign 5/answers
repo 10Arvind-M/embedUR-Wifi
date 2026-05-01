@@ -1,0 +1,158 @@
+1) Key features of Wi-Fi 6, 6E, and 7 vs Wi-Fi 5
+Wi-Fi 5 (802.11ac)
+5 GHz only
+MU-MIMO (downlink only)
+No OFDMA
+
+
+Wi-Fi 6 (802.11ax)
+OFDMA (uplink + downlink)
+Longer OFDMA symbol duration
+1024 QAM
+MU-MIMO (UL + DL)
+BSS Coloring (spatial reuse) and OBSS-PD
+Target Wake Time (TWT)
+Better efficiency in dense networks
+Trigger Based Random Access
+Improved Aggregation and Scheduling
+
+
+Wi-Fi 6E
+Same as Wi-Fi 6 + 6 GHz band
+Less interference
+More spectral effciency
+
+
+Wi-Fi 7 (802.11be)
+Multi-Link Operation (MLO)
+320 MHz channels
+4K-QAM
+Preamble Puncturing
+rTWT
+Dynamic OFDMA Scheduling
+Smarter Aggregation and Retransmission
+Extremely low latency with short guard intervals
+
+
+
+2) Role of OFDMA in Wi-Fi 6
+OFDMA divides a channel into Resource Units (RUs)
+Role:
+Multiple users transmit simultaneously
+AP schedules users dynamically
+
+Process:
+AP schedules trigger frames to control uplink access.
+The STA that didn't access the channel use the Resource Units
+
+
+Benefits:
+Reduced latency
+Better efficiency
+Less contention
+Ideal for IoT and dense networks
+
+
+
+3) Target Wake Time (TWT)
+ Power-saving mechanism in which STA and AP negotiate on time slots when the STA will be active to receive data for transmission.
+How:
+AP schedules when device wakes up
+Device sleeps rest of the time
+
+Process:
+1.TWT Request
+2.TWT Agreement
+3.STA sleep and wake at agreed times
+
+Benefits:
+Battery saving
+Reduced contention
+Better network efficiency
+
+
+4) Significance of 6 GHz (Wi-Fi 6E)
+Advantages:
+More spectrum(+6GHz)
+Less interference
+No legacy devices
+
+
+
+Impact:
+Higher throughput
+Lower latency
+Cleaner channels
+
+
+
+5) Wi-Fi 6 vs Wi-Fi 6E
+Feature		Wi-Fi 6		Wi-Fi 6E
+Band		2.4+5 GHz       2.4+5+6 GHz
+Interference	Medium		Low	
+Channels	Limited		Many		
+Performance	Good		Better
+
+6) Innovations in Wi-Fi 7
+Major features:
+MLO (multi-band usage)
+320 MHz bandwidth
+4K-QAM (higher data rate)
+Preamble Puncturing
+rTWT
+
+
+
+7) Multi-Link Operation (MLO)
+Uses multiple bands simultaneously
+2.4+5+6 GHz
+Impact:
+Higher throughput
+Lower latency
+Redundancy (failover)
+
+Example:
+Device uses 5 GHz + 6 GHz at same time
+
+8) Purpose of 802.11k and 802.11v
+
+802.11k (Radio Resource Management)
+Provides:
+Neighbor reports (list of nearby APs)
+
+802.11v (BSS transition)
+Helps:
+AP suggests better AP to client
+Benefit:
+Faster roaming decisions
+
+
+
+9) Fast BSS Transition (802.11r)
+Reduces roaming delay
+
+How:
+Pre-authentication
+Key caching
+
+Benefit:
+Seamless roaming (important for VoIP)
+Efficient in dense networks
+Enhanced UX in enterprise and public Wifi
+
+
+10) How 802.11k/v/r work together
+
+Combined workflow:
+Step 1 (802.11k):
+Client gets list of nearby APs
+
+Step 2 (802.11v):
+AP recommends best AP
+
+Step 3 (802.11r):
+Fast authentication during handoff
+
+Result:
+Fast + seamless roaming with minimal delay
+
