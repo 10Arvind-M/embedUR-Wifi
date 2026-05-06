@@ -1,0 +1,302 @@
+1) What are the pillars of Wi-Fi security?
+
+The main pillars of Wi-Fi security are:
+
+| Pillar                       | Purpose                                     |
+| ---------------------------- | ------------------------------------------- |
+| Authentication               | Verify identity of client/AP                |
+| Confidentiality (Encryption) | Protect data from eavesdropping             |
+| Integrity                    | Ensure packets are not modified             |
+
+
+Authentication
+It ensures only valid users/devices connect.
+Examples:
+
+* PSK authentication
+* 802.1X/EAP authentication
+* SAE in WPA3
+
+Confidentiality (Encryption)
+
+Encryption protects wireless traffic from attackers.
+Examples:
+
+* WEP
+* TKIP
+* CCMP (AES)
+* GCMP
+
+Integrity
+
+Integrity ensures packets are not altered.
+
+Mechanisms:
+
+* MIC
+* CBC-MAC
+* Galois authentication
+
+Protects against:
+
+* Packet tampering
+* Forged frames
+
+
+2) Difference between authentication and encryption in Wi-Fi security
+
+| Feature           | Authentication   | Encryption              |
+| ----------------- | ---------------- | ----------------------- |
+| Purpose           | Verify identity  | Protect data            |
+| Question answered | “Who are you?”   | “Can others read this?” |
+| Happens first?    | Yes              | After authentication    |
+| Examples          | PSK, SAE, 802.1X | TKIP, CCMP, GCMP        |
+
+
+3) Differences between WEP, WPA, WPA2, and WPA3
+
+| Feature         | WEP            | WPA             | WPA2       | WPA3                 |
+| --------------- | -------------- | --------------- | ---------- | -------------------- |
+| Cipher          | RC4            | TKIP/RC4        | AES-CCMP   | SAE + GCMP           |
+| Security        | Weak           | Better          | Strong     | Strongest            |
+| Authentication  | Shared key     | PSK/802.1X      | PSK/802.1X | SAE/802.1X           |
+| Vulnerabilities | Easily cracked | TKIP weaknesses | KRACK      | Improved protections |
+
+
+4) Why is WEP considered insecure?
+
+WEP is insecure because:
+
+1. Weak IVs
+
+WEP uses small Initialization Vectors (IVs).
+
+2.RC4 weaknesses
+
+RC4 implementation in WEP is flawed.
+
+
+3.Static shared keys
+
+Same key reused for long periods.
+
+4.Easily cracked
+
+Attackers can recover WEP keys in minutes using packet sniffing and replay attacks.
+
+5) Why was WPA2 introduced?
+
+WPA2 was introduced to solve WPA/TKIP limitations.
+
+Problems in WPA
+
+* RC4 weaknesses remained
+* TKIP only temporary solution
+
+WPA2 improvements
+
+Introduced:
+1.AES for encryption.
+2.AUC using PSK and EAP
+3.Used CBC MAC for data integrity.
+
+This provides:
+* Strong encryption
+* Better integrity
+* Better replay protection
+
+
+
+6) Role of PMK in the 4-way handshake
+
+PMK = Pairwise Master Key.
+
+
+In WPA2-PSK
+
+PMK derived from:
+
+* Passphrase
+* SSID
+
+
+In Enterprise
+
+PMK derived from:
+
+* MSK generated during EAP authentication
+
+
+During 4-way handshake
+
+PMK combines with:
+
+* ANonce
+* SNonce
+* MAC addresses
+
+to derive: PTK
+
+
+Importance
+PMK itself is usually not used directly for encryption.
+
+Instead:
+
+PMK → PTK → actual encryption keys
+
+
+7) How does the 4-way handshake ensure mutual authentication?
+
+The 4-way handshake ensures:
+
+* Client proves knowledge of PMK
+* AP proves knowledge of PMK
+
+without sending PMK directly.
+
+
+ Step 1 — M1
+
+AP sends:
+
+* ANonce
+
+
+
+Step 2 — M2
+
+Client:
+
+* Generates SNonce
+* Derives PTK
+* Sends MIC
+
+If MIC valid:
+AP knows client has correct PMK
+
+
+Step 3 — M3
+
+AP:
+
+* Derives same PTK
+* Sends GTK encrypted
+* Sends MIC
+
+If MIC valid:
+Client knows AP has correct PMK
+
+Step 4 — M4
+Client confirms key installation.
+
+
+Result
+Both sides verify that they derived key independently and know the password.
+
+This provides mutual authentication.
+
+
+8) What happens if wrong passphrase is used during 4-way handshake?
+
+If wrong password entered:
+
+Wrong PMK generated
+
+Client derives incorrect PMK.
+
+
+Incorrect PTK generated
+
+Since PMK wrong:
+PTK also becomes wrong
+
+ MIC validation fails
+
+During M2/M3:
+
+* MICs won’t match
+
+Authentication fails
+
+AP rejects client.
+
+
+Final Result
+
+Client:
+Cannot complete handshake and connection fails.
+
+9) What problem does 802.1X solve?
+
+802.1X solves:
+Unauthorized network access
+Problem with shared passwords
+In PSK networks:
+- Everyone uses same password
+- Difficult to manage securely
+
+802.1X solution
+Provides:
+- user authentication
+- Centralized AAA server
+- Dynamic key generation
+
+Components
+
+| Component 		| Role |
+|
+| Supplicant 		| Client |
+| Authenticator 	| AP/Switch |
+| Authentication Server | RADIUS/AAA |
+
+Benefits
+- Strong identity verification
+- Centralized control
+- Individual credentials
+- Better auditing
+
+
+
+10) How does 802.1X enhance security over wireless networks?
+
+802.1X enhances security by using:
+- EAP authentication
+- AAA server
+- Dynamic session keys
+
+instead of shared passwords.
+
+Per-user authentication
+Each user gets unique credentials.
+
+Dynamic key generation
+New PMK/PTK generated per session.
+ 
+Centralized authentication
+AAA server controls:
+- Authentication
+- Authorization
+- Accounting
+
+Supports certificates
+Can use:
+- EAP-TLS
+- Certificates
+- MFA
+
+Better scalability
+Ideal for:
+- Enterprises
+- Universities
+- Large organizations
+
+Security Improvements Over PSK
+
+| PSK 				| 802.1X |
+| Shared password 		| Unique credentials |
+| Hard to revoke one user 	| Easy user management |
+| Lower accountability 		| Full auditing |
+| Weaker enterprise security 	| Strong enterprise security |
+
+
